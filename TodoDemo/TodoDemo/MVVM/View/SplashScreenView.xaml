@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TodoDemo.MVVM.View.SplashScreenView"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White"
+             xmlns:vm="clr-namespace:TodoDemo.MVVM.ViewModel"
+             >
+    <ContentPage.BindingContext>
+        <vm:SplashScreenViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Margin="25, 45,25,0">
+        <Image Source="todoBackground.png" Aspect="AspectFit"/>
+        <Label Margin="0,10,0,0" Text="Lorem Ipsum" FontSize="25" FontAttributes="Bold" />
+        <Label Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."/>
+        <Button VerticalOptions="EndAndExpand" Margin="0,0,0,50" CornerRadius="15" Text="Let's started" BackgroundColor="#272727" TextColor="White" Command="{Binding StartCommand}"/>
+    </StackLayout>
+</ContentPage>
