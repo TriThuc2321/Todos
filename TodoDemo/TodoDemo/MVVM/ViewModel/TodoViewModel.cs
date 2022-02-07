@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -46,7 +47,10 @@ namespace TodoDemo.MVVM.ViewModel
             if(TaskInput != null || TaskInput != "")
             {
                 string id = DataManager.Ins.TodoServices.GenerateId();
-                Todo newTodo = new Todo(id, TaskInput, false);
+                CultureInfo viVn = new CultureInfo("vi-VN");
+                string date = DateTime.Now.ToString("d", viVn);
+
+                Todo newTodo = new Todo(id, TaskInput, false, date);
 
                 Todos.Add(newTodo);
                 DataManager.Ins.ListTodos.Add(newTodo);

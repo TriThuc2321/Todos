@@ -23,10 +23,7 @@
 
         <CollectionView x:Name="clview" 
                             ItemsSource="{Binding Todos}" 
-                            SelectedItem="{Binding SelectedTodo}"
-                            SelectionMode="Single" 
-                            SelectionChangedCommand="{Binding SelectedCommand}"
-                            SelectionChangedCommandParameter="{Binding SelectedItem, Source={x:Reference clview}}"                            
+                            SelectionMode="None"
                             >            
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -34,7 +31,7 @@
                         <SwipeView.LeftItems>
                             <SwipeItems>
                                 <SwipeItem Text="Delete"
-                                        BackgroundColor="White"
+                                        BackgroundColor="White"                                           
                                         Command="{Binding Source={x:Reference clview}, Path = BindingContext.DeleteCommand}"
                                         CommandParameter="{Binding}" 
                                                        />
@@ -42,9 +39,10 @@
                         </SwipeView.LeftItems>
 
                         <Frame Margin="5" CornerRadius="15">
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Name}"/>
-                                <ImageButton 
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Name}"/>
+                                    <ImageButton 
                                         Source="{Binding Status}" 
                                         HeightRequest="25" 
                                         Aspect="AspectFit" 
@@ -52,16 +50,18 @@
                                         HorizontalOptions="EndAndExpand" 
                                         Command="{Binding Source={x:Reference clview}, Path = BindingContext.CheckCommand}"
                                         CommandParameter="{Binding}" >
-                                    <ImageButton.Triggers>
-                                        <DataTrigger TargetType="ImageButton" Binding="{Binding Status}" Value="false">
-                                            <Setter Property="Source" Value="check.png"/>
-                                        </DataTrigger>
-                                        <DataTrigger TargetType="ImageButton" Binding="{Binding Status}" Value="true">
-                                            <Setter Property="Source" Value="checked.png"/>
-                                        </DataTrigger>
-                                    </ImageButton.Triggers>
-                                </ImageButton>
-                            </StackLayout>
+                                        <ImageButton.Triggers>
+                                            <DataTrigger TargetType="ImageButton" Binding="{Binding Status}" Value="false">
+                                                <Setter Property="Source" Value="check.png"/>
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="ImageButton" Binding="{Binding Status}" Value="true">
+                                                <Setter Property="Source" Value="checked.png"/>
+                                            </DataTrigger>
+                                        </ImageButton.Triggers>
+                                    </ImageButton>
+                                </StackLayout>
+                                <Label Text="{Binding Time}"/>
+                            </StackLayout>                           
                         </Frame>
                     </SwipeView>
                 </DataTemplate>

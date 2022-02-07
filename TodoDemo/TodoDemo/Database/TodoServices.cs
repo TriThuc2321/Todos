@@ -24,6 +24,7 @@ namespace TodoDemo.Database
                   Id = item.Object.Id,
                   Name = item.Object.Name,
                   Status = item.Object.Status,
+                  Time = item.Object.Time,  
               }).ToList();
         }
         public async Task AddTodo(Todo todo)
@@ -35,6 +36,7 @@ namespace TodoDemo.Database
                   Id = todo.Id,
                   Name = todo.Name,
                   Status = todo.Status,
+                  Time= todo.Time,
               });
         }
         public async Task UpdateTodo(Todo todo)
@@ -50,7 +52,8 @@ namespace TodoDemo.Database
               {
                   Id = todo.Id,
                   Name = todo.Name,
-                  Status = todo.Status
+                  Status = todo.Status,
+                  Time = todo.Time
               });
         }
 

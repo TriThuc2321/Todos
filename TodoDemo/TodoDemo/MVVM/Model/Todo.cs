@@ -9,11 +9,12 @@ namespace TodoDemo.MVVM.Model
     {
         public Todo() { }
 
-        public Todo(string id, string name, bool status)
+        public Todo(string id, string name, bool status, string time)
         {
             Id = id;
             Name = name;
             Status = status;
+            Time = time;
         }
 
         private string _id;
@@ -45,6 +46,17 @@ namespace TodoDemo.MVVM.Model
             {
                 _status = value;
                 OnPropertyChanged("Status");
+            }
+        }
+
+        private string _time;
+        public string Time
+        {
+            get { return _time; }
+            set
+            {
+                _time = value;
+                OnPropertyChanged("Time");
             }
         }
 
