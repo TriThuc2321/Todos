@@ -5,6 +5,7 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White"
              xmlns:vm="clr-namespace:TodoDemo.MVVM.ViewModel"
+              Shell.FlyoutBehavior="Disabled"
              >
     <ContentPage.BindingContext>
         <vm:SplashScreenViewModel/>
@@ -14,6 +15,13 @@
         <Image Source="todoBackground.png" Aspect="AspectFit"/>
         <Label Margin="0,10,0,0" Text="Lorem Ipsum" FontSize="25" FontAttributes="Bold" />
         <Label Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."/>
-        <Button VerticalOptions="EndAndExpand" Margin="0,0,0,50" CornerRadius="15" Text="Let's started" BackgroundColor="#272727" TextColor="White" Command="{Binding StartCommand}"/>
+        <Button 
+            VerticalOptions="EndAndExpand" 
+            Margin="0,0,0,50" 
+            CornerRadius="15" 
+            Text="Let's started" 
+            BackgroundColor="#272727" 
+            TextColor="White" 
+            Command="{Binding StartCommand}"/>
     </StackLayout>
 </ContentPage>

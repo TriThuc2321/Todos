@@ -11,7 +11,7 @@ namespace TodoDemo
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage( new SplashScreenView());
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

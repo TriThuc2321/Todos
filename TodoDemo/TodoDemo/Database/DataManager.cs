@@ -11,7 +11,7 @@ namespace TodoDemo.Database
     public class DataManager: ObservableObject
     {
         private static DataManager _ins;
-        public static DataManager Ins
+        public static DataManager Ins 
         {
             get
             {
@@ -22,19 +22,27 @@ namespace TodoDemo.Database
         }
         public bool loadData;
 
-        public List<Todo> ListTodos;
-        public TodoServices TodoServices;
+        public List<User> ListUsers;
+        public UserServices UserServices;
         public DataManager()
         {
-            TodoServices = new TodoServices();
+            UserServices = new UserServices();
 
             getData();
         }
 
         async Task getData()
         {
-            ListTodos = await TodoServices.GetAllTodos();            
+            ListUsers = await UserServices.GetAllUsers();            
         }      
         
+        private User _currentUser;
+        public User CurrentUser
+        {
+            get { return _currentUser; }
+            set {
+                _currentUser = value;
+            OnPropertyChanged("CurrentUser");}
+        }
     }
 }

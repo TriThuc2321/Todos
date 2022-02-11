@@ -22,7 +22,7 @@ namespace TodoDemo.MVVM.ViewModel
         }
         public ICommand StartCommand => new Command<object>(async (obj) =>
         {
-            await navigation.PushAsync(new TodoView());
+            await navigation.PushAsync(new LoginView());
         });
     }
 }
