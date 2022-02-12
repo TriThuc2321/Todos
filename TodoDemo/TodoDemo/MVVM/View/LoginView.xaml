@@ -10,32 +10,25 @@
         <vm:LoginViewModel/>
     </ContentPage.BindingContext>
 
-    <Grid >
-        <Image Source="https://i.pinimg.com/564x/81/6e/2d/816e2d21337476423ff10c099b7b9fbc.jpg" Aspect="AspectFill"/>
-
-        <BoxView>
-            <BoxView.Background>
-                <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
-                    <GradientStop Color="Transparent" Offset="0"/>
-                    <GradientStop Color="#ffffff" Offset="1"/>
-                </LinearGradientBrush>
-            </BoxView.Background>
-        </BoxView>
-
+    <Grid BackgroundColor="#191720">
+       <!-- <Image Source="https://i.pinimg.com/564x/81/6e/2d/816e2d21337476423ff10c099b7b9fbc.jpg" Aspect="AspectFill"/>
+      -->     
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition />
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition />
 
             </Grid.RowDefinitions>
-            <Label Text="LOGIN" Grid.Row="1" FontSize="25" Margin="25,0,0,0" TextColor="Black" FontAttributes="Bold"/>
-            <Frame Grid.Row="2" CornerRadius="20" Margin="20, 5, 20, 5" Padding="5" HasShadow="False" BackgroundColor="White" VerticalOptions="Center" >
+            <StackLayout Margin="0,30,0,0">
+                <Label Text="Let's sign you in." FontSize="40" Margin="25,0,0,0" TextColor="White" FontAttributes="Bold"/>
+                <Label Text="Welcome back." FontSize="30" Margin="25,0,0,0" TextColor="White"/>
+                <Label Text="You've been missed!" FontSize="30" Margin="25,0,0,0" TextColor="White"/>
+            </StackLayout>
+            <Frame BorderColor="#272727" Grid.Row="1" CornerRadius="10" Margin="20, 5, 20, 5" Padding="5,8,5,8" HasShadow="False" BackgroundColor="Transparent" VerticalOptions="Center" >
                 <Grid>
                     <Entry                    
                         Placeholder="Email"
@@ -45,12 +38,11 @@
                         TextColor="Black"
                         Text="{Binding UserName}"
                 />
-
                 </Grid>
 
             </Frame>
 
-            <Frame Grid.Row="3" CornerRadius="20" Margin="20, 5, 20, 5" Padding="5" HasShadow="False" BackgroundColor="White" VerticalOptions="Center" >
+            <Frame BorderColor="#272727" Grid.Row="2" CornerRadius="10" Margin="20, 5, 20, 5" Padding="5,8,5,8" HasShadow="False" BackgroundColor="Transparent" VerticalOptions="Center" >
                 <StackLayout Orientation="Horizontal">
                     <Entry                    
                         Placeholder="Password"
@@ -60,60 +52,20 @@
                         TextColor="Black"         
                         Text="{Binding Password}"
                         HorizontalOptions="FillAndExpand"
-                        IsPassword="{Binding IsPassword}"
+                        IsPassword="{Binding IsPassword}"     
                 />
                 </StackLayout>
-            </Frame>
+            </Frame>          
 
-            <Grid Grid.Row="4" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <StackLayout VerticalOptions="End" Orientation="Horizontal" Margin="25,-5,0,0" >
-                    <CheckBox VerticalOptions="Center"  Color="Black" />
-                    <Label Text="Remeber me" VerticalOptions="Center" Margin="-5,0,0,0" TextColor="Black"/>
-                </StackLayout>
-
-                <Label TextColor="Black" Text="Forgot your password?" FontAttributes="Italic" Margin="0,-5,25,0" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-            </Grid>
-
-            <Button 
-                Grid.Row="5"
-                CornerRadius="20" 
-                Margin="25,20,25,0"
-                Padding="5"  
-                BackgroundColor="#272727" 
-                VerticalOptions="Center"
-                HeightRequest="40"
-                Text="LOGIN"
-                TextColor="White"
-                FontSize="15"
-                Command="{Binding LoginCommand}"
-                />
-            <StackLayout Grid.Row="6">
-                <Label Margin="0,20,0,0" Text="or" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Italic"/>
-                <ImageButton              
-                CornerRadius="20" 
-                Margin="25,0,25,0"
-                Padding="5"  
-                VerticalOptions="Center"
-                HeightRequest="40"
-                Source="googleLogin.png"
-                BackgroundColor="WhiteSmoke"
-                />
-            </StackLayout>
-
-            <Label Grid.Row="7" VerticalOptions="End"  HorizontalOptions="Center" Margin="0,0,0,10">
+            <Label Grid.Row="3" VerticalOptions="End"  HorizontalOptions="Center" >
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="You don't have account?" TextColor="Black">
+                        <Span Text="You don't have account?" TextColor="#CFCFCF">
                             <Span.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
                             </Span.GestureRecognizers>
                         </Span>
-                        <Span Text=" Sign Up" TextColor="#272727" FontAttributes="Bold">
+                        <Span Text=" Register" TextColor="White" FontAttributes="Bold">
                             <Span.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
                             </Span.GestureRecognizers>
@@ -121,6 +73,21 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
+
+            <Button 
+                Grid.Row="4"
+                CornerRadius="10" 
+                Margin="25,20,25,10"
+                Padding="5"  
+                BackgroundColor="White" 
+                FontAttributes="Bold"
+                VerticalOptions="Center"
+                HeightRequest="40"
+                Text="LOGIN"
+                TextColor="#272727"
+                FontSize="15"
+                Command="{Binding LoginCommand}"
+                />
 
         </Grid>
 

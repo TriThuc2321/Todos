@@ -4,7 +4,7 @@
              x:Class="TodoDemo.MVVM.View.TodoView"
              xmlns:vm="clr-namespace:TodoDemo.MVVM.ViewModel"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="White"
+             BackgroundColor="#191720"
              >
     <ContentPage.BindingContext>
         <vm:TodoViewModel/>
@@ -13,12 +13,15 @@
     <StackLayout Margin="25,25,25,0">
         <StackLayout Orientation="Horizontal">
             <ImageButton Command="{Binding BackNavigationCommand}" Source="backicon.png" HeightRequest="25" BackgroundColor="Transparent" HorizontalOptions="Start" WidthRequest="25" Aspect="AspectFit"/>
-            <Label Text="My Todos" FontSize="25" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#272727"/>
+            <Label Text="My Todos" FontSize="25" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="White"/>
         </StackLayout>
         
         <StackLayout Orientation="Horizontal" Margin="0,25,0,0">
-            <Editor Text="{Binding TaskInput}" HorizontalOptions="FillAndExpand"/>
-            <Button Text="Add" Command="{Binding NewTodoCommand}" CornerRadius="15" Margin="0,0,10,0" BackgroundColor="#272727" TextColor="White"/>
+            <Frame BorderColor="#272727" HorizontalOptions="FillAndExpand" CornerRadius="10" Margin="20, 5, 20, 5" Padding="15,8,15,8" HasShadow="False" BackgroundColor="Transparent">
+                <Editor HeightRequest="40" TextColor="White" FontSize="15" Text="{Binding TaskInput}" VerticalOptions="Center"/>
+            </Frame>
+            
+            <ImageButton Source="add.png" Command="{Binding NewTodoCommand}" CornerRadius="15" Margin="0,0,10,0" HeightRequest="30" BackgroundColor="Transparent"/> 
         </StackLayout>        
 
         <CollectionView x:Name="clview" 

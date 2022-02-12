@@ -11,17 +11,18 @@
         <vm:SplashScreenViewModel/>
     </ContentPage.BindingContext>
 
-    <StackLayout Margin="25, 45,25,0">
-        <Image Source="todoBackground.png" Aspect="AspectFit"/>
-        <Label Margin="0,10,0,0" Text="Lorem Ipsum" FontSize="25" FontAttributes="Bold" />
-        <Label Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."/>
+    <StackLayout Padding="25, 45,25,0" BackgroundColor="#191720">
+        <Image Source="todoBackground2.png" Aspect="AspectFit"/>
+        <Label Margin="0,10,0,0" Text="Lorem Ipsum" FontSize="25" FontAttributes="Bold" TextColor="White" />
+        <Label Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." TextColor="White"/>
         <Button 
             VerticalOptions="EndAndExpand" 
             Margin="0,0,0,50" 
             CornerRadius="15" 
             Text="Let's started" 
-            BackgroundColor="#272727" 
-            TextColor="White" 
+            BackgroundColor="White" 
+            TextColor="#272727"
+            FontAttributes="Bold"
             Command="{Binding StartCommand}"/>
     </StackLayout>
 </ContentPage>

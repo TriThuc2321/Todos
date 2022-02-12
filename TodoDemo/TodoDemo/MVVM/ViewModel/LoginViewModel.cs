@@ -29,6 +29,7 @@ namespace TodoDemo.MVVM.ViewModel
 
                 await DataManager.Ins.UserServices.UpdateUser(selectedTodo);
             }*/
+            await navigation.PushAsync(new TodoView());
         });
 
         public ICommand RegisterCommand => new Command<object>(async (obj) =>

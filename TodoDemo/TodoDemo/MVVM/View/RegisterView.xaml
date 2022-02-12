@@ -9,35 +9,24 @@
         <vm:RegisterViewModel/>
     </ContentPage.BindingContext>
 
-    <Grid >
-        <Image Source="https://i.pinimg.com/564x/81/6e/2d/816e2d21337476423ff10c099b7b9fbc.jpg" Aspect="AspectFill"/>
-
-        <BoxView>
-            <BoxView.Background>
-                <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
-                    <GradientStop Color="Transparent" Offset="0"/>
-                    <GradientStop Color="#ffffff" Offset="1"/>
-                </LinearGradientBrush>
-            </BoxView.Background>
-        </BoxView>
+    <Grid BackgroundColor="#191720">
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition />
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition />
 
             </Grid.RowDefinitions>
-            <Label Text="REGISTER" VerticalOptions="End" FontSize="25" Margin="25,0,0,0" TextColor="Black" FontAttributes="Bold"/>
-            <Frame Grid.Row="1" CornerRadius="20" Margin="20, 5, 20, 5" Padding="5" HasShadow="False" BackgroundColor="White" VerticalOptions="Center" >
+            <Label Text="REGISTER" VerticalOptions="End" FontSize="25" Margin="25,0,0,0" TextColor="White" FontAttributes="Bold"/>
+            <Frame Grid.Row="1" BorderColor="#272727" CornerRadius="10" Margin="20, 5, 20, 5" Padding="5,8,5,8" HasShadow="False" BackgroundColor="Transparent" VerticalOptions="Center" >
                 <Grid >
                     <Entry                    
-                        Placeholder="Username"
+                        Placeholder="Name"
                         PlaceholderColor="#C0C0C0"
                         FontSize="15"
                         Margin="15,0,0,0"
@@ -46,7 +35,7 @@
                 />
                 </Grid>
             </Frame>
-            <Frame Grid.Row="2" CornerRadius="20" Margin="20, 5, 20, 5" Padding="5" HasShadow="False" BackgroundColor="White" VerticalOptions="Center" >
+            <Frame Grid.Row="2" BorderColor="#272727" CornerRadius="10" Margin="20, 5, 20, 5" Padding="5,8,5,8" HasShadow="False" BackgroundColor="Transparent" VerticalOptions="Center" >
                 <Grid>
                     <Entry
                         Placeholder="Username"
@@ -59,7 +48,7 @@
                 </Grid>
             </Frame>
 
-            <Frame Grid.Row="3" CornerRadius="20" Margin="20, 5, 20, 5" Padding="5" HasShadow="False" BackgroundColor="White" VerticalOptions="Center" >
+            <Frame Grid.Row="3" BorderColor="#272727" CornerRadius="10" Margin="20, 5, 20, 5" Padding="5,8,5,8" HasShadow="False" BackgroundColor="Transparent" VerticalOptions="Center" >
                 <StackLayout Orientation="Horizontal">
                     <Entry                    
                     Placeholder="Password"
@@ -74,7 +63,7 @@
                     <ImageButton Source="{Binding EyeSource}" HorizontalOptions="End" WidthRequest="25" Margin="0,0,10,0" BackgroundColor="Transparent" Command="{Binding EyeCommand}"/>
                 </StackLayout>
             </Frame>
-            <Frame Grid.Row="4" CornerRadius="20" Margin="20, 5, 20, 5" Padding="5" HasShadow="False" BackgroundColor="White" VerticalOptions="Center" >
+            <Frame Grid.Row="4" BorderColor="#272727" CornerRadius="10" Margin="20, 5, 20, 5" Padding="5,8,5,8" HasShadow="False" BackgroundColor="Transparent" VerticalOptions="Center" >
                 <StackLayout Orientation="Horizontal">
                     <Entry                    
                     Placeholder="Password"
@@ -88,31 +77,17 @@
                 />
                     <ImageButton Source="{Binding EyeSourceConfirm}" HorizontalOptions="End" WidthRequest="25" Margin="0,0,10,0" BackgroundColor="Transparent" Command="{Binding EyeConfirmCommand}"/>
                 </StackLayout>
-            </Frame>
+            </Frame>                  
 
-            <Button 
-                Grid.Row="5"
-                CornerRadius="20" 
-                Margin="25,20,25,0"
-                Padding="5"  
-                BackgroundColor="#272727" 
-                VerticalOptions="Center"
-                HeightRequest="40"
-                Text="REGISTER"
-                TextColor="White"
-                FontSize="15"
-                Command="{Binding RegisterCommand}"
-                />           
-
-            <Label Grid.Row="7" VerticalOptions="End"  HorizontalOptions="Center" Margin="0,0,0,10">
+            <Label Grid.Row="5" VerticalOptions="End"  HorizontalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="You already have account?" TextColor="Black">
+                        <Span Text="You already have account?" TextColor="White">
                             <Span.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding LoginCommand}"/>
                             </Span.GestureRecognizers>
                         </Span>
-                        <Span Text=" Sign In" TextColor="#272727" FontAttributes="Bold">
+                        <Span Text=" Sign In" TextColor="White" FontAttributes="Bold">
                             <Span.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding LoginCommand}"/>
                             </Span.GestureRecognizers>
@@ -121,6 +96,20 @@
                 </Label.FormattedText>
             </Label>
 
+            <Button 
+                Grid.Row="6"
+                CornerRadius="10" 
+                Margin="25,20,25,10"
+                Padding="5"  
+                BackgroundColor="White" 
+                FontAttributes="Bold"
+                VerticalOptions="Center"
+                HeightRequest="40"
+                Text="REGISTER"
+                TextColor="#272727"
+                FontSize="15"
+                Command="{Binding RegisterCommand}"
+                />
         </Grid>
 
     </Grid>
