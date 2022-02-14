@@ -11,13 +11,11 @@
     </ContentPage.BindingContext>
 
     <StackLayout Margin="25,25,25,0">
-        <StackLayout Orientation="Horizontal">
-            <ImageButton Command="{Binding BackNavigationCommand}" Source="backicon.png" HeightRequest="25" BackgroundColor="Transparent" HorizontalOptions="Start" WidthRequest="25" Aspect="AspectFit"/>
-            <Label Text="My Todos" FontSize="25" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="White"/>
-        </StackLayout>
+        <Label Text="My Todos" FontSize="25" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="White"/>
+
         
         <StackLayout Orientation="Horizontal" Margin="0,25,0,0">
-            <Frame BorderColor="#272727" HorizontalOptions="FillAndExpand" CornerRadius="10" Margin="20, 5, 20, 5" Padding="15,8,15,8" HasShadow="False" BackgroundColor="Transparent">
+            <Frame BorderColor="#272727" HorizontalOptions="FillAndExpand" CornerRadius="10" Margin="0, 5, 20, 5" Padding="15,8,15,8" HasShadow="False" BackgroundColor="Transparent">
                 <Editor HeightRequest="40" TextColor="White" FontSize="15" Text="{Binding TaskInput}" VerticalOptions="Center"/>
             </Frame>
             
@@ -29,19 +27,19 @@
                             SelectionMode="None"
                             >            
             <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <SwipeView>
+                <DataTemplate >                    
+                    <SwipeView>                        
                         <SwipeView.LeftItems>
-                            <SwipeItems>
+                            <SwipeItems >
                                 <SwipeItem Text="Delete"
-                                        BackgroundColor="White"                                           
+                                        BackgroundColor="Transparent" 
                                         Command="{Binding Source={x:Reference clview}, Path = BindingContext.DeleteCommand}"
                                         CommandParameter="{Binding}" 
-                                                       />
+                                 />
                             </SwipeItems>
-                        </SwipeView.LeftItems>
-
-                        <Frame Margin="5" CornerRadius="15">
+                        </SwipeView.LeftItems>                        
+                        
+                        <Frame Margin="15" CornerRadius="15">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding Name}"/>

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using TodoDemo.Core;
+using TodoDemo.Database;
+using TodoDemo.MVVM.Model;
 using TodoDemo.MVVM.View;
 using Xamarin.Forms;
 
@@ -36,60 +39,47 @@ namespace TodoDemo.MVVM.ViewModel
         });
         public ICommand RegisterCommand => new Command<object>(async (obj) =>
         {
-            
+            if (checkInfor())
+            {
+                await addUser();
+            }
             
         });
-        /*bool checkInfor()
+
+        private async Task addUser()
+        {
+            User user = new User(DataManager.Ins.UserServices.GenerateId(), UserName, Password, null);
+
+            DataManager.Ins.ListUsers.Add(user);
+            await DataManager.Ins.UserServices.AddUser(user);
+            DependencyService.Get<IToast>().ShortToast("Đăng ký tài khoản thành công!");
+            await navigation.PopAsync();
+        }
+
+        bool checkInfor()
         {
             if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(Password) || string.IsNullOrWhiteSpace(ConfirmPassword))
             {
                 DependencyService.Get<IToast>().ShortToast("Vui lòng nhập đầy đủ thông tin");
-            }
-            else if (!DataManager.Ins.UsersServices.checkEmail(Account))
-            {
-                DependencyService.Get<IToast>().ShortToast("Email không đúng định dạng");
-            }
+                return false;
+            }           
             else if (Password.Length < 6)
             {
                 DependencyService.Get<IToast>().ShortToast("Mật khẩu dài hơn 5 kí tự");
+                return false;
             }
             else if (Password != ConfirmPassword)
             {
                 DependencyService.Get<IToast>().ShortToast("Xác nhận mật khẩu không trùng khớp");
+                return false;
             }
-            else if (DataManager.Ins.UsersServices.ExistEmail(Account, DataManager.Ins.users))
+            else if (DataManager.Ins.UserServices.userExist(UserName, DataManager.Ins.ListUsers))
             {
-                DependencyService.Get<IToast>().ShortToast("Email đã được sử dụng");
-            }
-            else
-            {
-                Random rand = new Random();
-                string randomCode = (rand.Next(999999)).ToString();
-                DataManager.Ins.VerifyCode = randomCode;
-
-                DataManager.Ins.CurrentUser = new User()
-                {
-                    email = Account,
-                    password = DataManager.Ins.UsersServices.Encode(Password),
-                    name = Name,
-                    contact = "",
-                    birthday = "",
-                    cmnd = "",
-                    profilePic = "defaultUser.png",
-                    address = "",
-                    score = 0,
-                    rank = 3
-                };
-
-                await SendEmail("Mã xác nhận", "Cảm ơn bạn đã sử dụng LikeFly, đây là mã xác nhận của bạn: " + randomCode, Account);
-                DependencyService.Get<IToast>().ShortToast("Mã xác nhận đã được gửi đến email của bạn");
-                DataManager.Ins.users.Add(DataManager.Ins.CurrentUser);
-                DataManager.Ins.ListUsers.Add(DataManager.Ins.CurrentUser);
-                //navigation.PushAsync(new ConfirmEmailView());
-                await currentShell.GoToAsync($"{nameof(ConfirmEmailView)}");
+                DependencyService.Get<IToast>().ShortToast("Tài khoản đã được sử dụng");
+                return false;
             }
             return true;
-        }*/
+        }
         void eyeHandle(object obj)
         {
             IsPassword = !IsPassword;

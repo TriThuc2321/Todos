@@ -19,7 +19,7 @@ namespace TodoDemo.Database
         public async Task<List<User>> GetAllUsers()
         {
             return (await firebase
-              .Child("Users")
+              .Child("UsersTodo")
               .OnceAsync<User>()).Select(item => new User
               {
                   Id = item.Object.Id,
@@ -35,7 +35,7 @@ namespace TodoDemo.Database
         public async Task AddUser(User user)
         {
             await firebase
-              .Child("Users")
+              .Child("UsersTodo")
               .PostAsync(new User()
               {
                   Id = user.Id,
@@ -47,11 +47,11 @@ namespace TodoDemo.Database
         public async Task UpdateUser(User user)
         {
             var toUpdateUser = (await firebase
-              .Child("Users")
+              .Child("UsersTodo")
               .OnceAsync<User>()).Where(a => a.Object.Id == user.Id).FirstOrDefault();
 
             await firebase
-              .Child("Users")
+              .Child("UsersTodo")
               .Child(toUpdateUser.Key)
               .PutAsync(new User
               {
@@ -64,9 +64,9 @@ namespace TodoDemo.Database
         public async Task DeleteUser(string userId)
         {
             var toDeleted = (await firebase
-               .Child("Users").OnceAsync<User>()).FirstOrDefault(p => p.Object.Id == userId);
+               .Child("UsersTodo").OnceAsync<User>()).FirstOrDefault(p => p.Object.Id == userId);
 
-            await firebase.Child("Users").Child(toDeleted.Key).DeleteAsync();
+            await firebase.Child("UsersTodo").Child(toDeleted.Key).DeleteAsync();
 
         }
         public string GenerateId(int length = 10)
@@ -79,6 +79,9 @@ namespace TodoDemo.Database
             return randomString;
         }
 
-        
+        public bool userExist(string userName, List<User> listUsers)
+        {
+            return listUsers.Find(e=> e.UserName == userName) != null;
+        }
     }
 }

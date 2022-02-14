@@ -30,7 +30,7 @@
                         PlaceholderColor="#C0C0C0"
                         FontSize="15"
                         Margin="15,0,0,0"
-                        TextColor="Black"
+                        TextColor="White"
                         Text="{Binding Name}"
                 />
                 </Grid>
@@ -42,7 +42,7 @@
                         PlaceholderColor="#C0C0C0"
                         FontSize="15"
                         Margin="15,0,0,0"
-                        TextColor="Black"
+                        TextColor="White"
                         Text="{Binding UserName}"
                 />
                 </Grid>
@@ -51,15 +51,15 @@
             <Frame Grid.Row="3" BorderColor="#272727" CornerRadius="10" Margin="20, 5, 20, 5" Padding="5,8,5,8" HasShadow="False" BackgroundColor="Transparent" VerticalOptions="Center" >
                 <StackLayout Orientation="Horizontal">
                     <Entry                    
-                    Placeholder="Password"
-                    PlaceholderColor="#C0C0C0"
-                    FontSize="15"
-                    Margin="15,0,0,0"
-                    TextColor="Black"         
-                    Text="{Binding Password}"
+                        Placeholder="Password"
+                        PlaceholderColor="#C0C0C0"
+                        FontSize="15"
+                        Margin="15,0,0,0"
+                        TextColor="White"
+                        Text="{Binding Password}"
                         HorizontalOptions="FillAndExpand"
                         IsPassword="{Binding IsPassword}"
-                />
+                        />
                     <ImageButton Source="{Binding EyeSource}" HorizontalOptions="End" WidthRequest="25" Margin="0,0,10,0" BackgroundColor="Transparent" Command="{Binding EyeCommand}"/>
                 </StackLayout>
             </Frame>
@@ -70,7 +70,7 @@
                     PlaceholderColor="#C0C0C0"
                     FontSize="15"
                     Margin="15,0,0,0"
-                    TextColor="Black"         
+                        TextColor="White"
                     Text="{Binding ConfirmPassword}"
                         HorizontalOptions="FillAndExpand"
                         IsPassword="{Binding IsConfirmPassword}"

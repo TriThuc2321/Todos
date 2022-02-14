@@ -10,7 +10,7 @@ namespace TodoDemo.MVVM.Model
     {
         public User() { }
 
-        public User(string id, string userName, string password, ObservableCollection<Todo> todos)
+        public User(string id, string userName, string password, List<Todo> todos)
         {
             Id = id;
             UserName = userName;
@@ -50,8 +50,8 @@ namespace TodoDemo.MVVM.Model
             }
         }
 
-        private ObservableCollection<Todo> _todos;
-        public ObservableCollection<Todo> Todos
+        private List<Todo> _todos;
+        public List<Todo> Todos
         {
             get { return _todos; }
             set { 

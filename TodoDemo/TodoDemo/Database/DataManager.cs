@@ -29,6 +29,7 @@ namespace TodoDemo.Database
             UserServices = new UserServices();
 
             getData();
+            
         }
 
         async Task getData()
@@ -42,7 +43,31 @@ namespace TodoDemo.Database
             get { return _currentUser; }
             set {
                 _currentUser = value;
-            OnPropertyChanged("CurrentUser");}
+                ProfilePic = "avatar.png";
+                OnPropertyChanged("CurrentUser");            
+            }
+        }
+
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        private string _profilePic;
+        public string ProfilePic
+        {
+            get { return _profilePic; }
+            set
+            {
+                _profilePic = value;
+                OnPropertyChanged("ProfilePic");
+            }
         }
     }
 }

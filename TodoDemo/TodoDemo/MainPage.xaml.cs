@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TodoDemo.Database;
 using TodoDemo.MVVM.View;
 using Xamarin.Forms;
 
@@ -16,6 +17,8 @@ namespace TodoDemo
             InitializeComponent();
            
             Routing.RegisterRoute(nameof(SplashScreenView), typeof(SplashScreenView));
+
+            this.BindingContext = DataManager.Ins;
         }
     }
 }

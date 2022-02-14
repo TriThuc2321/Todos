@@ -44,7 +44,12 @@ namespace TodoDemo.MVVM.ViewModel
         });
         public ICommand NewTodoCommand => new Command<object>(async (obj) =>
         {
-            if(TaskInput != null || TaskInput != "")
+            if (string.IsNullOrEmpty(TaskInput))
+            {
+                DependencyService.Get<IToast>().ShortToast("Please enter your task");
+                return;
+            }
+            else
             {
                 string id = DataManager.Ins.UserServices.GenerateId();
                 CultureInfo viVn = new CultureInfo("vi-VN");
@@ -53,7 +58,10 @@ namespace TodoDemo.MVVM.ViewModel
                 Todo newTodo = new Todo(id, TaskInput, false, date);
 
                 Todos.Add(newTodo);
-
+                if(DataManager.Ins.CurrentUser.Todos == null)
+                {
+                    DataManager.Ins.CurrentUser.Todos = new List<Todo>();
+                }
                 DataManager.Ins.CurrentUser.Todos.Add(newTodo);
 
                 await DataManager.Ins.UserServices.UpdateUser(DataManager.Ins.CurrentUser);
@@ -64,27 +72,32 @@ namespace TodoDemo.MVVM.ViewModel
         });
         public ICommand DeleteCommand => new Command<object>(async (obj) =>
         {
-            /*Todo selectedTodo = obj as Todo;
+            Todo selectedTodo = obj as Todo;
 
             if (selectedTodo != null)
             {
                 Todos.Remove(selectedTodo);
-                DataManager.Ins.ListTodos.Remove(selectedTodo);
-                await DataManager.Ins.TodoServices.DeleteTodo(selectedTodo);
-            }*/
+                DataManager.Ins.CurrentUser.Todos.Remove(selectedTodo);
+                await DataManager.Ins.UserServices.UpdateUser(DataManager.Ins.CurrentUser);
+            }
         });
 
         public ICommand CheckCommand => new Command<object>(async (obj) =>
         {
-            /*Todo selectedTodo = obj as Todo;
+            Todo selectedTodo = obj as Todo;
+            selectedTodo.Status = !selectedTodo.Status;
 
             if (selectedTodo != null)
             {
-                selectedTodo.Status = !selectedTodo.Status;
-                findAndUpdate(Todos, selectedTodo);
-
-                await DataManager.Ins.UserServices.UpdateUser(selectedTodo);
-            }*/
+                for (int i = 0; i < DataManager.Ins.CurrentUser.Todos.Count; i++)
+                {
+                    if (DataManager.Ins.CurrentUser.Todos[i].Id == selectedTodo.Id)
+                    {
+                        DataManager.Ins.CurrentUser.Todos[i] = selectedTodo;
+                        Todos[i] = selectedTodo;
+                    }
+                }
+            }
         });
 
         bool findAndUpdate(ObservableCollection<Todo> mList, Todo value)
