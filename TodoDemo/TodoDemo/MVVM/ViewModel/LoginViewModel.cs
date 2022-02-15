@@ -13,11 +13,13 @@ namespace TodoDemo.MVVM.ViewModel
     public class LoginViewModel: ObservableObject
     {
         public LoginViewModel() { }
+        Shell curentShell;
         INavigation navigation;
         public Command EyeCommand { get; }
 
-        public LoginViewModel(INavigation navigation)
+        public LoginViewModel(INavigation navigation, Shell curentShell)
         {
+            this.curentShell = curentShell;
             this.navigation = navigation;
 
             EyeSource = "eyeOffIcon.png";
@@ -39,7 +41,8 @@ namespace TodoDemo.MVVM.ViewModel
                     {
                         DataManager.Ins.CurrentUser = user;
                         DependencyService.Get<IToast>().ShortToast("Đăng nhập thành công!");
-                        await navigation.PushAsync(new TodoView());
+                        await curentShell.GoToAsync($"//{nameof(TodoView)}");
+                       
                     }
                     else
                     {

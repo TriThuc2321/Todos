@@ -94,24 +94,13 @@ namespace TodoDemo.MVVM.ViewModel
                     if (DataManager.Ins.CurrentUser.Todos[i].Id == selectedTodo.Id)
                     {
                         DataManager.Ins.CurrentUser.Todos[i] = selectedTodo;
+                        await DataManager.Ins.UserServices.UpdateUser(DataManager.Ins.CurrentUser);
                         Todos[i] = selectedTodo;
                     }
                 }
             }
         });
-
-        bool findAndUpdate(ObservableCollection<Todo> mList, Todo value)
-        {
-            for(int i =0; i< mList.Count; i++)
-            {
-               if( mList[i].Id == value.Id)
-                {
-                    mList[i] = value;
-                    return true;
-                }
-            }
-            return false;
-        }
+        
         private ObservableCollection<Todo> _todos;
         public ObservableCollection<Todo> Todos
         {

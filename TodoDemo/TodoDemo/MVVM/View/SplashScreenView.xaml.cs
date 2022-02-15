@@ -16,8 +16,9 @@ namespace TodoDemo.MVVM.View
         public SplashScreenView()
         {
             InitializeComponent();
-            DataManager.Ins.loadData = true;
             this.BindingContext = new SplashScreenViewModel(Navigation);
+            DataManager.Ins.currentShell = Shell.Current;
+            DataManager.Ins.navigation = Navigation;
         }
     }
 }

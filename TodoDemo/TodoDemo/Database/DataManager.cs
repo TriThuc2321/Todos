@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TodoDemo.Core;
 using TodoDemo.MVVM.Model;
+using TodoDemo.MVVM.View;
+using Xamarin.Forms;
 
 namespace TodoDemo.Database
 {
@@ -20,10 +23,11 @@ namespace TodoDemo.Database
             }
             set { _ins = value; }
         }
-        public bool loadData;
-
+        
         public List<User> ListUsers;
         public UserServices UserServices;
+        public INavigation navigation;
+        public Shell currentShell;
         public DataManager()
         {
             UserServices = new UserServices();
@@ -35,15 +39,29 @@ namespace TodoDemo.Database
         async Task getData()
         {
             ListUsers = await UserServices.GetAllUsers();            
-        }      
-        
+        }
+
+        public ICommand LogOut => new Command<object>(async (obj) =>
+        {
+            await currentShell.GoToAsync($"//{nameof(LoginView)}");
+            /*if (navigation.NavigationStack.Count > 1)
+            {
+                Page page = navigation.NavigationStack.First();
+                *//*if (page != null && page != this)
+                {
+                    Navigation.RemovePage(page);
+                }*//*
+            }*/
+
+        });
+
         private User _currentUser;
         public User CurrentUser
         {
             get { return _currentUser; }
             set {
                 _currentUser = value;
-                ProfilePic = "avatar.png";
+                ProfilePic = "defaultUser.png";
                 OnPropertyChanged("CurrentUser");            
             }
         }

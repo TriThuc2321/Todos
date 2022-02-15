@@ -39,7 +39,8 @@
     <Shell.FlyoutHeader >
         <Grid HeightRequest="190">
             <Image 
-                Source="https://i.pinimg.com/564x/60/75/61/607561e3f12062a5beb71210a60b3b06.jpg"
+                BackgroundColor="#191720"
+                Source="todoBackground2.png"
                 Aspect="AspectFill"
                 Opacity="1"/>
 
@@ -73,7 +74,7 @@
     <Shell.FlyoutFooter>
         <StackLayout >
             <StackLayout Orientation="Horizontal" Margin="20,0,0,0">
-                <ImageButton x:Name="LogOutBtn" Command="{Binding LogOut}" Source="logOut.png" Aspect="AspectFit" HeightRequest="20" BackgroundColor="Transparent" />
+                <ImageButton Command="{Binding LogOut}" Source="logOut.png" Aspect="AspectFit" HeightRequest="20" BackgroundColor="Transparent" />
                 <Label Text="Log Out" FontAttributes="Bold" FontSize="15"/>
             </StackLayout>
             <Label Text="Go Tour"

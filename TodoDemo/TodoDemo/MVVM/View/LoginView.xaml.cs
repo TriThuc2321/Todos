@@ -15,7 +15,7 @@ namespace TodoDemo.MVVM.View
         public LoginView()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel(Navigation);
+            this.BindingContext = new LoginViewModel(Navigation, Shell.Current);
         }
     }
 }
