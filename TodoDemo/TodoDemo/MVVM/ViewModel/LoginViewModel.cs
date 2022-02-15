@@ -41,7 +41,7 @@ namespace TodoDemo.MVVM.ViewModel
                     {
                         DataManager.Ins.CurrentUser = user;
                         DependencyService.Get<IToast>().ShortToast("Login successfully!");
-                        await navigation.PushAsync(new TodoView());
+                        await curentShell.GoToAsync($"//{nameof(TodoView)}");
                     }
                     else
                     {
@@ -56,12 +56,12 @@ namespace TodoDemo.MVVM.ViewModel
         {
             if (string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(Password))
             {
-                DependencyService.Get<IToast>().ShortToast("Vui lòng nhập đầy đủ thông tin");
+                DependencyService.Get<IToast>().ShortToast("Please fill in all information");
                 return false;
             }
             else if (Password.Length < 6)
             {
-                DependencyService.Get<IToast>().ShortToast("Mật khẩu dài hơn 5 kí tự");
+                DependencyService.Get<IToast>().ShortToast("Password must be longer than 5 characters");
                 return false;
             }            
             return true;

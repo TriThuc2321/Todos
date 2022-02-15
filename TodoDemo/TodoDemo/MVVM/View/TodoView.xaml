@@ -29,7 +29,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate >
                     <Grid>
-                        <Frame Margin="15" CornerRadius="15">
+                        <Frame Margin="0,10,0,10" CornerRadius="15">
                             <SwipeView Padding="0">
                                 <SwipeView.LeftItems>
                                     <SwipeItems >
@@ -41,9 +41,9 @@
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
 
-                                <StackLayout>
+                                <StackLayout BackgroundColor="White">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
+                                        <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="#272727"/>
                                         <ImageButton 
                                         Source="{Binding Status}" 
                                         HeightRequest="25" 
@@ -62,7 +62,7 @@
                                             </ImageButton.Triggers>
                                         </ImageButton>
                                     </StackLayout>
-                                    <Label Text="{Binding Time}"/>
+                                    <Label Text="{Binding Time}" TextColor="#272727"/>
                                 </StackLayout>
                             </SwipeView>
                         </Frame>

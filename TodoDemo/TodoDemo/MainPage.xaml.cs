@@ -17,7 +17,6 @@ namespace TodoDemo
             InitializeComponent();
            
             Routing.RegisterRoute(nameof(SplashScreenView), typeof(SplashScreenView));
-            Routing.RegisterRoute(nameof(LoginView), typeof(LoginView));
             Routing.RegisterRoute(nameof(HomeView), typeof(HomeView));
             Routing.RegisterRoute(nameof(TodoView), typeof(TodoView));
             Routing.RegisterRoute(nameof(AboutView), typeof(AboutView));

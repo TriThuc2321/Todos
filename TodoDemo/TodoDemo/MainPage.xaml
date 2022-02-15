@@ -15,7 +15,7 @@
             <StackLayout  Padding="16,20,4,0" Orientation="Horizontal">
                 <Image Source="{Binding Icon}" HeightRequest="20"/>
                 <Label Text="{Binding Title}"  
-                   HorizontalOptions="Start" Margin="10,0,0,0" TextColor="#777777" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                   HorizontalOptions="Start" Margin="10,0,0,0" TextColor="#272727" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
             </StackLayout>
         </DataTemplate>
     </Shell.ItemTemplate>
@@ -75,7 +75,7 @@
         <StackLayout >
             <StackLayout Orientation="Horizontal" Margin="20,0,0,0">
                 <ImageButton Command="{Binding LogOut}" Source="logOut.png" Aspect="AspectFit" HeightRequest="20" BackgroundColor="Transparent" />
-                <Label Text="Log Out" FontAttributes="Bold" FontSize="15"/>
+                <Label Text="Log Out" FontAttributes="Bold" FontSize="15" TextColor="#272727"/>
             </StackLayout>
             <Label Text="Go Tour"
                TextColor="#777777"
