@@ -33,20 +33,19 @@ namespace TodoDemo.MVVM.ViewModel
                 User user = DataManager.Ins.ListUsers.Find(e => e.UserName == UserName);
                 if (user == null)
                 {
-                    DependencyService.Get<IToast>().ShortToast("Tài khoản không tồn tại!");                    
+                    DependencyService.Get<IToast>().ShortToast("Account is not existed!");                    
                 }
                 else
                 {
                     if(user.Password == Password)
                     {
                         DataManager.Ins.CurrentUser = user;
-                        DependencyService.Get<IToast>().ShortToast("Đăng nhập thành công!");
-                        await curentShell.GoToAsync($"//{nameof(TodoView)}");
-                       
+                        DependencyService.Get<IToast>().ShortToast("Login successfully!");
+                        await navigation.PushAsync(new TodoView());
                     }
                     else
                     {
-                        DependencyService.Get<IToast>().ShortToast("Mật khẩu không đúng!");
+                        DependencyService.Get<IToast>().ShortToast("Incorrect password!");
                     }
                 }
             }

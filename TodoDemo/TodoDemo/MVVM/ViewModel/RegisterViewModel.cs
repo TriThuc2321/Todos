@@ -52,7 +52,7 @@ namespace TodoDemo.MVVM.ViewModel
 
             DataManager.Ins.ListUsers.Add(user);
             await DataManager.Ins.UserServices.AddUser(user);
-            DependencyService.Get<IToast>().ShortToast("Đăng ký tài khoản thành công!");
+            DependencyService.Get<IToast>().ShortToast("Register successfully!");
             await navigation.PopAsync();
         }
 
@@ -60,22 +60,22 @@ namespace TodoDemo.MVVM.ViewModel
         {
             if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(Password) || string.IsNullOrWhiteSpace(ConfirmPassword))
             {
-                DependencyService.Get<IToast>().ShortToast("Vui lòng nhập đầy đủ thông tin");
+                DependencyService.Get<IToast>().ShortToast("Please fill full information");
                 return false;
             }           
             else if (Password.Length < 6)
             {
-                DependencyService.Get<IToast>().ShortToast("Mật khẩu dài hơn 5 kí tự");
+                DependencyService.Get<IToast>().ShortToast("Password must be longer than 5 characters");
                 return false;
             }
             else if (Password != ConfirmPassword)
             {
-                DependencyService.Get<IToast>().ShortToast("Xác nhận mật khẩu không trùng khớp");
+                DependencyService.Get<IToast>().ShortToast("Confirmation password does not match");
                 return false;
             }
             else if (DataManager.Ins.UserServices.userExist(UserName, DataManager.Ins.ListUsers))
             {
-                DependencyService.Get<IToast>().ShortToast("Tài khoản đã được sử dụng");
+                DependencyService.Get<IToast>().ShortToast("The account has been used");
                 return false;
             }
             return true;
