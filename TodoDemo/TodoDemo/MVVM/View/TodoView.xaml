@@ -24,26 +24,27 @@
 
         <CollectionView x:Name="clview" 
                             ItemsSource="{Binding Todos}" 
-                            SelectionMode="None"
+                            SelectionMode="None" 
                             >            
             <CollectionView.ItemTemplate>
-                <DataTemplate >                    
-                    <SwipeView>                        
-                        <SwipeView.LeftItems>
-                            <SwipeItems >
-                                <SwipeItem Text="Delete"
+                <DataTemplate >
+                    <Grid>
+                        <Frame Margin="15" CornerRadius="15">
+                            <SwipeView Padding="0">
+                                <SwipeView.LeftItems>
+                                    <SwipeItems >
+                                        <SwipeItem Text="Delete"
                                         BackgroundColor="Transparent" 
                                         Command="{Binding Source={x:Reference clview}, Path = BindingContext.DeleteCommand}"
                                         CommandParameter="{Binding}" 
                                  />
-                            </SwipeItems>
-                        </SwipeView.LeftItems>                        
-                        
-                        <Frame Margin="15" CornerRadius="15">
-                            <StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Name}"/>
-                                    <ImageButton 
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Name}"/>
+                                        <ImageButton 
                                         Source="{Binding Status}" 
                                         HeightRequest="25" 
                                         Aspect="AspectFit" 
@@ -51,20 +52,21 @@
                                         HorizontalOptions="EndAndExpand" 
                                         Command="{Binding Source={x:Reference clview}, Path = BindingContext.CheckCommand}"
                                         CommandParameter="{Binding}" >
-                                        <ImageButton.Triggers>
-                                            <DataTrigger TargetType="ImageButton" Binding="{Binding Status}" Value="false">
-                                                <Setter Property="Source" Value="check.png"/>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="ImageButton" Binding="{Binding Status}" Value="true">
-                                                <Setter Property="Source" Value="checked.png"/>
-                                            </DataTrigger>
-                                        </ImageButton.Triggers>
-                                    </ImageButton>
+                                            <ImageButton.Triggers>
+                                                <DataTrigger TargetType="ImageButton" Binding="{Binding Status}" Value="false">
+                                                    <Setter Property="Source" Value="check.png"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="ImageButton" Binding="{Binding Status}" Value="true">
+                                                    <Setter Property="Source" Value="checked.png"/>
+                                                </DataTrigger>
+                                            </ImageButton.Triggers>
+                                        </ImageButton>
+                                    </StackLayout>
+                                    <Label Text="{Binding Time}"/>
                                 </StackLayout>
-                                <Label Text="{Binding Time}"/>
-                            </StackLayout>                           
+                            </SwipeView>
                         </Frame>
-                    </SwipeView>
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
